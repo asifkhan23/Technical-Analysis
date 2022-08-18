@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
 ticker = st.sidebar.text_input('Enter Ticker', 'SPY')
-t = st.sidebar.selectbox('Select Number of Days', ( 400, 180, 90, 60, 15, 10, 7, 5, 3, 2, 1))
+t = st.sidebar.selectbox('Select Number of Days', ( 400, 350, 180, 90, 60, 15, 10, 7, 5, 3, 2, 1))
 i = st.sidebar.selectbox('Select Time Granularity', ( '1d', '1h', '15m', '1m'))
 st.header(f'{ticker} Technical Indicators')
 
@@ -422,10 +422,22 @@ fig3.update_layout(layout)
 
 # fig3.show()
 
+tab1, tab2, tab3 = st.tabs(["PSAR & SMA", "Bollinger Bands", "Oscillators"])
 
+with tab1:
+    st.header("PSAR & SMA")
+    st.plotly_chart(fig)
+
+with tab2:
+    st.header("Bollinger Bands")
+    st.plotly_chart(fig2)
+
+with tab3:
+    st.header("Oscillators")
+    st.plotly_chart(fig3)   
 
     
-st.write(fig)
-st.write(fig2)
-st.write(fig3)
+# st.write(fig)
+# st.write(fig2)
+# st.write(fig3)
 
