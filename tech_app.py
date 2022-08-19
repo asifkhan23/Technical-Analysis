@@ -422,7 +422,54 @@ fig3.update_layout(layout)
 
 # fig3.show()
 
-tab1, tab2, tab3 = st.tabs(["PSAR & SMA", "Bollinger Bands", "Oscillators"])
+# Fibonacci
+
+df.reset_index(inplace = True)
+
+# highest_swing and lowest_swings generate the area for which we have to check ratios
+highest_swing = -1
+lowest_swing = -1
+for i in range(1,df.shape[0]-1):
+  if df['High'][i] > df['High'][i-1] and df['High'][i] > df['High'][i+1] and (highest_swing == -1 or df['High'][i] > df['High'][highest_swing]):
+    highest_swing = i
+  if df['Low'][i] < df['Low'][i-1] and df['Low'][i] < df['Low'][i+1] and (lowest_swing == -1 or df['Low'][i] < df['Low'][lowest_swing]):
+    lowest_swing = i
+
+name = '0,0.236, 0.382, 0.5 , 0.618, 0.786,1'
+ratios = [0,0.236, 0.382, 0.5 , 0.618, 0.786,1]
+colors = ["black","red","green","blue","cyan","magenta","yellow"]
+levels = []
+max_level = df['High'][highest_swing]
+min_level = df['Low'][lowest_swing]
+for ratio in ratios:
+  if highest_swing > lowest_swing: # Uptrend
+    levels.append(max_level - (max_level-min_level)*ratio)
+  else: # Downtrend
+    levels.append(min_level + (max_level-min_level)*ratio)
+    
+# Fibonacci plot
+fig4 = go.Figure()
+fig4.add_traces(go.Candlestick(x=df['Date'],
+                              open=df['Open'],
+                              high=df['High'],
+                              low=df['Low'],
+                              close=df['Close']))
+
+start_date = df['Date'][df.index[min(highest_swing,lowest_swing)]]
+end_date = df['Date'][df.index[max(highest_swing,lowest_swing)]]
+y=np.array([start_date,end_date])
+print(y)
+for i in range(len(levels)):
+  # previous pyplot plot
+  # plt.hlines(levels[i],start_date, end_date,label="{:.1f}%".format(ratios[i]*100),colors=colors[i], linestyles="dashed")
+  fig4.add_shape(type='line', 
+    x0=start_date, y0=levels[i], x1=end_date, y1=levels[i],
+    line=dict(
+        color=colors[i],
+        dash="dash"
+    ))
+
+tab1, tab2, tab3, tab4 = st.tabs(["PSAR & SMA", "Bollinger Bands", "Oscillators", "Fibonacci Retacements"])
 
 with tab1:
     st.header("PSAR & SMA")
@@ -434,8 +481,13 @@ with tab2:
 
 with tab3:
     st.header("Oscillators")
-    st.plotly_chart(fig3)   
-
+    st.plotly_chart(fig3)
+ 
+with tab4:
+    st.header("Fibonacci Retracements")
+    st.write(" Retracemrnt Levels - (0=black, 0.236=red, 0.382=green, 0.5=blue, 0.618=cyan, 0.786= magenta,1 = yellow )")
+    st.write(y)
+    st.plotly_chart(fig4)
     
 # st.write(fig)
 # st.write(fig2)
