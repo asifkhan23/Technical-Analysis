@@ -15,7 +15,7 @@ import streamlit as st
 ticker = st.sidebar.text_input('Enter Ticker', 'SPY')
 t = st.sidebar.selectbox('Select Number of Days', ( 400, 350, 180, 90, 60, 15, 10, 7, 5, 3, 2, 1))
 i = st.sidebar.selectbox('Select Time Granularity', ( '1d', '1h', '15m', '1m'))
-st.header(f'{ticker} Technical Indicators')
+st.header(f'{ticker}.upper() Technical Indicators')
 
 
 # In[2]:
