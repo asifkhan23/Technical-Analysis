@@ -15,7 +15,7 @@ import streamlit as st
 ticker = st.sidebar.text_input('Enter Ticker', 'SPY')
 t = st.sidebar.selectbox('Select Number of Days', (400, 350, 180, 90, 60, 45, 30, 15, 10, 7, 5, 3, 2, 1))
 i = st.sidebar.selectbox('Select Time Granularity', ('1d', '1h', '15m', '1m'))
-st.header(f'{ticker} Technical Indicators')
+st.header(f'{ticker.upper()} Technical Indicators')
 
 
 # In[2]:
@@ -217,7 +217,7 @@ fig.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
 
 
 layout = go.Layout(
-    title=f"{ticker} Moving Averages & Parabolic Stop & Reverse",
+    title=f"{ticker.upper()} Moving Averages & Parabolic Stop & Reverse",
     plot_bgcolor='#efefef',
     # Font Families
     font_family='Monospace',
@@ -281,7 +281,7 @@ fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
 
 
 layout = go.Layout(
-    title=f'{ticker} Bollinger Bands',
+    title=f'{ticker.upper()} Bollinger Bands',
     plot_bgcolor='#efefef',
     # Font Families
     font_family='Monospace',
@@ -320,7 +320,7 @@ fig2.update_layout(layout)
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=6, cols=1, subplot_titles=(f"{ticker} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
+fig3 = make_subplots(rows=6, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
 
 fig3.append_trace(
     go.Candlestick(
