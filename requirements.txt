@@ -4,5 +4,5 @@ pandas
 plotly
 scipy
 collections
-matplotlib
+matplotlib.pyplot
 
