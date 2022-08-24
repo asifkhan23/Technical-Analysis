@@ -2,3 +2,7 @@ streamlit>= 1.11.1
 yfinance
 pandas
 plotly
+scipy
+collections
+matplotlib
+
