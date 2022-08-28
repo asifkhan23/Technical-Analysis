@@ -4,3 +4,5 @@ pandas
 plotly
 matplotlib
 scipy
+scikit-learn
+statistics
