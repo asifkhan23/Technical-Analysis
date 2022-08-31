@@ -960,7 +960,7 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["PSAR & SMA", "Bollinger Bands", "Oscillators", "Fibonacci Retracements", 'Dow Theory', 'Regression Channels', 'Ichimoku Cloud'])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["PSAR & SMA", "Bollinger Bands", "Oscillators", "Fibonacci", 'Dow Theory', 'Regression Channels', 'Ichimoku Cloud'])
 
 with tab1:
     st.header("PSAR & SMA")
@@ -975,7 +975,7 @@ with tab3:
     st.plotly_chart(fig3)
     
 with tab4:
-    st.header("Fibonacci")
+    st.header("Fibonacci Retracements")
     st.write(" Retracemrnt Levels - (0=black, 0.236=red, 0.382=green, 0.5=blue, 0.618=cyan, 0.786= magenta,1 = yellow )")
     st.write(y)
     st.plotly_chart(fig4)
