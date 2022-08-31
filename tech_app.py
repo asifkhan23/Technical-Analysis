@@ -607,16 +607,16 @@ baseline = go.Scatter(x=df_c.index, y=df_c['Slow_Moving_Average'],
                    line=dict(color='orange', width=2), name="Slow_Moving_Average")
 
 conversion = go.Scatter(x=df_c.index, y=df_c['Fast_Moving_Average'], 
-                  line=dict(color='blue', width=1), name="Fast_Moving_Average")
+                  line=dict(color='blue', width=2), name="Fast_Moving_Average")
 
 lagging = go.Scatter(x=df_c.index, y=df_c['Chikou_Span'], 
-                  line=dict(color='purple', width=2, dash='dot'), name="Lagging")
+                  line=dict(color='gray', width=2, dash='solid'), name="Lagging")
 
 span_a = go.Scatter(x=df_c.index, y=df_c['Leading_Span_A'],
-                  line=dict(color='green', width=2, dash='dot'), name="Span A")
+                  line=dict(color='green', width=1, dash='solid'), name="Span A")
 
 span_b = go.Scatter(x=df_c.index, y=df_c['Leading_Span_B'],
-                    line=dict(color='red', width=1, dash='dot'), name="Span B")
+                    line=dict(color='red', width=1, dash='solid'), name="Span B")
 
 # Add plots to the figure
 fig7.add_trace(candle)
