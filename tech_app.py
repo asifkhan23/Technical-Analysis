@@ -250,7 +250,7 @@ else:
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
+                # dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
                 ]
                     )    
 
@@ -315,7 +315,7 @@ else:
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
+                # dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
                 ]
                     )
 
@@ -410,7 +410,7 @@ if i == '1d':
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
                 # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+                dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
                 ]
                     )
 else:
@@ -531,7 +531,7 @@ else:
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
+                # dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
                 ]
                     )
 
@@ -643,7 +643,7 @@ else:
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
+                # dict(values=["2022-09-05"])  # hide holidays (Christmas and New Year's, etc)
                 ]
                     )
     
