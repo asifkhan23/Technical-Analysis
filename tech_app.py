@@ -290,6 +290,13 @@ fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
 fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
                          line = dict(color='Black', width=2)))
 
+fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
+                         marker = dict(color='green', size=2)))
+
+fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
+                         marker = dict(color='red', size=2)))
+
+
 
 layout = go.Layout(
     title=f'{ticker.upper()} Bollinger Bands',
