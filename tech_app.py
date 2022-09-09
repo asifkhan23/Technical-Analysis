@@ -296,7 +296,14 @@ fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
 fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
                          marker = dict(color='red', size=2)))
 
+fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
+                         line = dict(color='red', width=2), visible='legendonly'))
 
+fig2.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
+                         line = dict(color='green', width=2), visible='legendonly'))
+
+fig2.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
+                         line = dict(color='purple', width=2), visible='legendonly'))
 
 layout = go.Layout(
     title=f'{ticker.upper()} Bollinger Bands',
