@@ -278,11 +278,14 @@ fig2 = go.Figure(data=[go.Candlestick(x=df.index,
                 low=df['Low'],
                 close=df['Adj Close'])])
 
+fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
+                         line = dict(color='blue', width=2)))
+
 fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
                          line = dict(color='Black', width=2)))
 
 fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
-                         line = dict(color='turquoise', width=2)))
+                         line = dict(color='orange', width=2)))
 
 fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
                          line = dict(color='Black', width=2)))
