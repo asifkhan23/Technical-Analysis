@@ -264,67 +264,67 @@ if __name__ == "__main__":
     df['9 MA'] = df['Adj Close'].rolling(9).mean()
     
 
-fig = go.Figure(data=[go.Candlestick(x=df.index,
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Close'])])
+# fig = go.Figure(data=[go.Candlestick(x=df.index,
+#                 open=df['Open'],
+#                 high=df['High'],
+#                 low=df['Low'],
+#                 close=df['Close'])])
 
-fig.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2)))
+# fig.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
+#                          marker = dict(color='green', size=2)))
 
-fig.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2)))
+# fig.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
+#                          marker = dict(color='red', size=2)))
 
-fig.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
-                         line = dict(color='red', width=2)))
+# fig.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
+#                          line = dict(color='red', width=2)))
 
-fig.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2)))
+# fig.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
+#                          line = dict(color='green', width=2)))
 
-fig.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2)))
+# fig.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
+#                          line = dict(color='blue', width=2)))
 
-fig.add_trace(go.Scatter(x=df.index, y=df['21 MA'], name='21 SMA',
-                         line = dict(color='orange', width=2)))
+# fig.add_trace(go.Scatter(x=df.index, y=df['21 MA'], name='21 SMA',
+#                          line = dict(color='orange', width=2)))
 
-fig.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
-                         line = dict(color='purple', width=2)))
-
-
-
-layout = go.Layout(
-    title=f"{ticker.upper()} Moving Averages & Parabolic Stop & Reverse",
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=15,
-    height=600, width=800)
-
-if i == '1d':
-    fig.update_xaxes(
-            rangeslider_visible=True,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-else:
-    fig.update_xaxes(
-            rangeslider_visible=True,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )    
+# fig.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
+#                          line = dict(color='purple', width=2)))
 
 
-fig.update_layout(layout)
+
+# layout = go.Layout(
+#     title=f"{ticker.upper()} Moving Averages & Parabolic Stop & Reverse",
+#     plot_bgcolor='#efefef',
+#     # Font Families
+#     font_family='Monospace',
+#     font_color='#000000',
+#     font_size=15,
+#     height=600, width=800)
+
+# if i == '1d':
+#     fig.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
+# else:
+#     fig.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )    
+
+
+# fig.update_layout(layout)
     
 # fig.show()
 
@@ -341,77 +341,77 @@ df['Lower'] = df['SMA'] - 2 * df['Std Dev']
 # In[14]:
 
 
-fig2 = go.Figure(data=[go.Candlestick(x=df.index,
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Adj Close'])])
+# fig2 = go.Figure(data=[go.Candlestick(x=df.index,
+#                 open=df['Open'],
+#                 high=df['High'],
+#                 low=df['Low'],
+#                 close=df['Adj Close'])])
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
+#                          line = dict(color='blue', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
+#                          line = dict(color='Black', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
-                         line = dict(color='orange', width=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
+#                          line = dict(color='orange', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
+#                          line = dict(color='Black', width=2)))
 
-fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2)))
+# fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
+#                          marker = dict(color='green', size=2)))
 
-fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2)))
+# fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
+#                          marker = dict(color='red', size=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
-                         line = dict(color='red', width=2), visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
+#                          line = dict(color='red', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2), visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
+#                          line = dict(color='green', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
-                         line = dict(color='purple', width=2), visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
+#                          line = dict(color='purple', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2), visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
+#                          line = dict(color='green', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2), visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
+#                          line = dict(color='red', width=2), visible='legendonly'))
 
-layout = go.Layout(
-    title=f'{ticker.upper()} Bollinger Bands',
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=15,
-    height=600, width=800,
-    )
+# layout = go.Layout(
+#     title=f'{ticker.upper()} Bollinger Bands',
+#     plot_bgcolor='#efefef',
+#     # Font Families
+#     font_family='Monospace',
+#     font_color='#000000',
+#     font_size=15,
+#     height=600, width=800,
+#     )
 
-if i == '1d':
-    fig2.update_xaxes(
-            rangeslider_visible=True,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-else:
-    fig2.update_xaxes(
-            rangeslider_visible=True,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
+# if i == '1d':
+#     fig2.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
+# else:
+#     fig2.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
 
-fig2.update_layout(layout)
+# fig2.update_layout(layout)
     
 # fig2.show()
 
@@ -525,7 +525,7 @@ layout = go.Layout(
     font_family='Monospace',
     font_color='#000000',
     font_size=20,
-    height=2000, width=1400,
+    height=2400, width=1400,
 )
 
 if i == '1d':
