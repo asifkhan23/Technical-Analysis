@@ -625,7 +625,7 @@ layout = go.Layout(
     font_family='Monospace',
     font_color='#000000',
     font_size=20,
-    height=2800, width=1400,
+    height=3200, width=1400,
 )
 
 if i == '1d':
@@ -657,55 +657,55 @@ fig3.update_layout(layout)
 # Regression Channels Plot
 # df_reg = yf.download(ticker, start, end, interval='1d')
 
-fig6 = go.Figure(data=[go.Candlestick(x=df.index,
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Adj Close'])])
+# fig6 = go.Figure(data=[go.Candlestick(x=df.index,
+#                 open=df['Open'],
+#                 high=df['High'],
+#                 low=df['Low'],
+#                 close=df['Adj Close'])])
 
 
-fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2)))
+# fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
+#                           line = dict(color='blue', width=2)))
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2)))
+# fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
+#                          line = dict(color='red', width=2)))
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2)))
+# fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
+#                          line = dict(color='green', width=2)))
 
 
-layout = go.Layout(
-    title=f'{ticker.upper()} Regression Channels',
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=15,
-    height=600, width=800,
-    )
+# layout = go.Layout(
+#     title=f'{ticker.upper()} Regression Channels',
+#     plot_bgcolor='#efefef',
+#     # Font Families
+#     font_family='Monospace',
+#     font_color='#000000',
+#     font_size=15,
+#     height=600, width=800,
+#     )
 
-if i == '1d':
-    fig6.update_xaxes(
-            rangeslider_visible=True,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                #dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )    
-else:
-    fig6.update_xaxes(
-            rangeslider_visible=True,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
+# if i == '1d':
+#     fig6.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 #dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )    
+# else:
+#     fig6.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
 
-fig6.update_layout(layout)
+# fig6.update_layout(layout)
 
 
 
