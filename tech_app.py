@@ -350,7 +350,7 @@ fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
 fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
                          line = dict(color='Black', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
+fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
                          line = dict(color='orange', width=2)))
 
 fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
@@ -362,7 +362,7 @@ fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
 fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
                          marker = dict(color='red', size=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
+fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 SMA',
                          line = dict(color='red', width=2), visible='legendonly'))
 
 fig2.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
