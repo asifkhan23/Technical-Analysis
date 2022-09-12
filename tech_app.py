@@ -529,13 +529,13 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
                          line = dict(color='blue', width=2),visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2)))
+                         line = dict(color='Black', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
                          line = dict(color='orange', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2)))
+                         line = dict(color='Black', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
                          marker = dict(color='green', size=2)))
