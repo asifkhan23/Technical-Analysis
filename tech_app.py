@@ -729,10 +729,10 @@ for name, data in df5:
 # and then define the fill using fill='tonexty' for the second trace
 for df in dfs:
     fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
-                              line = dict(color='rgba(0,0,0,0)')))
+                              line = dict(color='rgba(0,0,0,0)'),visible='legendonly'))
     
     fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
-                              line = dict(color='rgba(0,0,0,0)'),
+                              line = dict(color='rgba(0,0,0,0),'visible='legendonly'),
                               fill='tonexty', 
                               fillcolor = get_fill_color(df['label'].iloc[0])))
 
