@@ -732,7 +732,7 @@ for df in dfs:
                               line = dict(color='rgba(0,0,0,0)'),visible='legendonly'))
     
     fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
-                              line = dict(color='rgba(0,0,0,0)'),visible='legendonly'),
+                              line = dict(color='rgba(0,0,0,0)'),visible='legendonly',
                               fill='tonexty', 
                               fillcolor = get_fill_color(df['label'].iloc[0])))
 
