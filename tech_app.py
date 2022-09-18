@@ -371,8 +371,8 @@ dfr['below']= y - np.std(y)
 
 dfr['y_unscaled'] = df['Adj Close']
 dfr['y_pred_unscaled'] = np.exp(dfr['y_pred']) * df['Adj Close'].iloc[0]
-dfr['resistance'] = dfr['above'] * df['Adj Close'].iloc[0]
-dfr['support'] = dfr['below'] * df['Adj Close'].iloc[0]
+dfr['resistance'] = np.exp(dfr['above']) * df['Adj Close'].iloc[0]
+dfr['support'] = np.exp(dfr['below']) * df['Adj Close'].iloc[0]
 
 # data_len = len(df)
 # df['Number'] = np.arange(data_len)+1
