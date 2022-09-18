@@ -375,24 +375,24 @@ dfr['below']= y - np.std(y)
 dfr['y_unscaled'] = df['Adj Close']
 dfr['y_pred_unscaled'] = np.exp(dfr['y_pred']) * df['Adj Close'].iloc[0]
 
-data_len = len(df)
-df['Number'] = np.arange(data_len)+1
-df_high = df.copy()
-df_low = df.copy()
+# data_len = len(df)
+# df['Number'] = np.arange(data_len)+1
+# df_high = df.copy()
+# df_low = df.copy()
 
-while len(df_high)>4:
-    slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['High'])
-    df_high = df_high.loc[df_high['High'] > slope * df_high['Number'] + intercept]
+# while len(df_high)>4:
+#     slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['High'])
+#     df_high = df_high.loc[df_high['High'] > slope * df_high['Number'] + intercept]
 
-while len(df_low)>4:
-    slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Low'])
-    df_low = df_low.loc[df_low['Low'] < slope * df_low['Number'] + intercept]
+# while len(df_low)>4:
+#     slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Low'])
+#     df_low = df_low.loc[df_low['Low'] < slope * df_low['Number'] + intercept]
 
-slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['Adj Close'])
-df['Uptrend'] = slope * df['Number'] + intercept
+# slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['Adj Close'])
+# df['Uptrend'] = slope * df['Number'] + intercept
 
-slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Adj Close'])
-df['Downtrend'] = slope * df['Number'] + intercept
+# slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Adj Close'])
+# df['Downtrend'] = slope * df['Number'] + intercept
 
 # Ichimoku Cloud
 
@@ -561,11 +561,11 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend 
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
                           line = dict(color='blue', width=2),visible='legendonly'))
 
-fig3.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2), visible='legendonly'))
+# fig3.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
+#                          line = dict(color='red', width=2), visible='legendonly'))
 
-fig3.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2),visible='legendonly'))
+# fig3.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
+#                          line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
