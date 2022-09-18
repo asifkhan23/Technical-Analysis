@@ -380,18 +380,18 @@ df['Number'] = np.arange(data_len)+1
 df_high = df.copy()
 df_low = df.copy()
 
-while len(df_high)>3:
+while len(df_high)>4:
     slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['High'])
     df_high = df_high.loc[df_high['High'] > slope * df_high['Number'] + intercept]
 
-while len(df_low)>3:
+while len(df_low)>4:
     slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Low'])
     df_low = df_low.loc[df_low['Low'] < slope * df_low['Number'] + intercept]
 
-slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['Close'])
+slope, intercept, r_value, p_value, std_err = linregress(x=df_high['Number'], y=df_high['Adj Close'])
 df['Uptrend'] = slope * df['Number'] + intercept
 
-slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Close'])
+slope, intercept, r_value, p_value, std_err = linregress(x=df_low['Number'], y=df_low['Adj Close'])
 df['Downtrend'] = slope * df['Number'] + intercept
 
 # Ichimoku Cloud
