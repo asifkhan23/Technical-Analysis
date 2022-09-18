@@ -367,13 +367,12 @@ dfr['above']= y + np.std(y)
 dfr['below']= y - np.std(y)
 # Plot 'y' and 'y_pred' vs 'DateTimeIndex`
 
-dfr['resistance'] = dfr['above'] + 2 * df['Std Dev']
-dfr['support'] = dfr['above'] - 2 * df['Std Dev']
-
 # df[['y', 'y_pred', 'above_us', 'below_us']].plot(figsize = (12,6), title = 'Regression Analysis')
 
 dfr['y_unscaled'] = df['Adj Close']
 dfr['y_pred_unscaled'] = np.exp(dfr['y_pred']) * df['Adj Close'].iloc[0]
+dfr['resistance'] = dfr['y_pred_unscaled'] + 2 * df['Std Dev']
+dfr['support'] = dfr['y_pred_unscaled'] - 2 * df['Std Dev']
 
 # data_len = len(df)
 # df['Number'] = np.arange(data_len)+1
@@ -564,8 +563,8 @@ fig3.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['resistance'], name='Resistance',
                          line = dict(color='red', width=2), visible='legendonly'))
 
-# fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
-#                          line = dict(color='green', width=2),visible='legendonly'))
+fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
+                         line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
