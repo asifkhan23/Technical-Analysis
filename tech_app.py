@@ -367,8 +367,8 @@ dfr['above']= y + np.std(y)
 dfr['below']= y - np.std(y)
 # Plot 'y' and 'y_pred' vs 'DateTimeIndex`
 
-# df['above_us'] = lin_reg.predict(df['above'].values[:, np.newaxis])
-# df['below_us'] = lin_reg.predict(df['below'].values[:, np.newaxis])
+dfr['resistance'] = dfr['above'] + 2 * df['Std Dev']
+dfr['support'] = dfr['above'] - 2 * df['Std Dev']
 
 # df[['y', 'y_pred', 'above_us', 'below_us']].plot(figsize = (12,6), title = 'Regression Analysis')
 
@@ -561,10 +561,10 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend 
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
                           line = dict(color='blue', width=2),visible='legendonly'))
 
-# fig3.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-#                          line = dict(color='red', width=2), visible='legendonly'))
+fig3.add_trace(go.Scatter(x=df.index, y=df['resistance'], name='Resistance',
+                         line = dict(color='red', width=2), visible='legendonly'))
 
-# fig3.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
+# fig3.add_trace(go.Scatter(x=df.index, y=df['support'], name='Support',
 #                          line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
