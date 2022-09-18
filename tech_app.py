@@ -523,6 +523,12 @@ def decycler(data, hp_length):
     return dec
 
 df['decycler'] = decycler(df['Adj Close'], 20)
+df['decycler_signal_buy'] = np.where(df["decycler"]<df['Adj Close'], 1, 0)
+df['decycler_p'] = df['decycler_signal_buy'] * df['decycler']
+df['decycler_signal_sell'] = np.where(df["decycler"]>df['Adj Close'], 1, 0)
+df['decycler_n'] = df['decycler_signal_sell'] * df['decycler']
+df['decycler_p'].replace(0.000000, np.nan, inplace=True)
+df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 
 # In[14]:
 
@@ -663,8 +669,11 @@ fig3.add_trace(go.Scatter(x=df.index, y=dfr['resistance'], name='Resistance',
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
                          line = dict(color='green', width=2),visible='legendonly'))
 
-fig3.add_trace(go.Scatter(x=df.index, y=df['decycler'], name='Decycler',
-                         line = dict(color='saddlebrown', width=2),visible='legendonly'))
+fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
+                         line = dict(color='green', width=2),visible='legendonly'))
+
+fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
+                         line = dict(color='red', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
