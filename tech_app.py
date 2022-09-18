@@ -561,10 +561,10 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend 
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
                           line = dict(color='blue', width=2),visible='legendonly'))
 
-fig3.add_trace(go.Scatter(x=df.index, y=df['resistance'], name='Resistance',
+fig3.add_trace(go.Scatter(x=df.index, y=dfr['resistance'], name='Resistance',
                          line = dict(color='red', width=2), visible='legendonly'))
 
-# fig3.add_trace(go.Scatter(x=df.index, y=df['support'], name='Support',
+# fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
 #                          line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
