@@ -428,6 +428,72 @@ def get_fill_color(label):
 
 df_c = df5.copy()
 
+
+# Sine Waves
+
+def super_smoother(data, length):
+    """Python implementation of the Super Smoother indicator created by John Ehlers
+    :param data: list of price data
+    :type data: list
+    :param length: period
+    :type length: int
+    :return: Super smoothed price data
+    :rtype: list
+    """
+    ssf = []
+    for i, _ in enumerate(data):
+        if i < 2:
+            ssf.append(0)
+        else:
+            arg = 1.414 * 3.14159 / length
+            a_1 = math.exp(-arg)
+            b_1 = 2 * a_1 * math.cos(4.44/float(length))
+            c_2 = b_1
+            c_3 = -a_1 * a_1
+            c_1 = 1 - c_2 - c_3
+            ssf.append(c_1 * (data[i] + data[i-1]) / 2 + c_2 * ssf[i-1] + c_3 * ssf[i-2])
+    return ssf
+
+def ebsw(data, hp_length, ssf_length):
+    """Python implementation of Even Better Sine Wave indicator created by John Ehlers
+    :param data: list of price data
+    :type data: list
+    :param hp_length: period
+    :type hp_length: int
+    :param ssf_length: predict
+    :type ssf_length: int
+    :return: Even Better Sine Wave indicator data
+    :rtype: list
+    """
+    pi = 3.14159
+    alpha1 = (1 - math.sin(2 * pi / hp_length)) / math.cos(2 * pi / hp_length)
+
+    hpf = []
+
+    for i, _ in enumerate(data):
+        if i < hp_length:
+            hpf.append(0)
+        else:
+            hpf.append((0.5 * (1 + alpha1) * (data[i] - data[i - 1])) + (alpha1 * hpf[i - 1]))
+
+    ssf = super_smoother(hpf, ssf_length)
+
+    wave = []
+    for i, _ in enumerate(data):
+        if i < ssf_length:
+            wave.append(0)
+        else:
+            w = (ssf[i] + ssf[i - 1] + ssf[i - 2]) / 3
+            p = (pow(ssf[i], 2) + pow(ssf[i - 1], 2) + pow(ssf[i - 2], 2)) / 3
+            if p == 0:
+                wave.append(0)
+            else:
+                wave.append(w / math.sqrt(p))
+
+    return wave
+
+df['ebs'] = ebsw(df['Adj Close'], 40, 10)
+
 # In[14]:
 
 
@@ -615,6 +681,9 @@ fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
                          line = dict(color='red', width=4),visible='legendonly'), row = 5, col = 1)
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ebs'], name='Sine Wave',
+                         line = dict(color='yellowgreen', width=4), visible='legendonly'), row = 5, col = 1 )
 
 
 # Make it pretty
