@@ -6,4 +6,4 @@ matplotlib
 scipy
 scikit-learn
 statistics
-math
+
