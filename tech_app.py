@@ -509,7 +509,7 @@ df_c = df5.copy()
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=6, cols=1, vertical_spacing = 0.02, subplot_titles=(f"{ticker.upper()} Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
+fig3 = make_subplots(rows=5, cols=1, vertical_spacing = 0.02, subplot_titles=(f"{ticker.upper()} Candlestick Chart", "RSI", "MACD", 'Stochastic Oscillators', "Indicators"))
 
 fig3.append_trace(
     go.Candlestick(
@@ -604,18 +604,17 @@ fig3.append_trace(
     ), row=3, col=1
 )
 
-
-fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
-                         line = dict(color='royalblue', width=4)), row = 4, col = 1 )
-
-fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
-                         line = dict(color='red', width=4)), row = 5, col = 1)
-
 fig3.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
-                         line = dict(color='blue', width=2)), row = 6, col = 1)
+                         line = dict(color='blue', width=2)), row = 4, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
-                         line = dict(color='red', width=2)), row = 6, col = 1)
+                         line = dict(color='red', width=2)), row = 4, col = 1)
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
+                         line = dict(color='royalblue', width=4), visible='legendonly'), row = 5, col = 1 )
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
+                         line = dict(color='red', width=4),visible='legendonly'), row = 5, col = 1)
 
 
 # Make it pretty
