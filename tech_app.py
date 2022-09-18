@@ -495,6 +495,35 @@ def ebsw(data, hp_length, ssf_length):
 
 df['ebs'] = ebsw(df['Adj Close'], 40, 10)
 
+# Elher's Decycler
+
+def decycler(data, hp_length):
+    """Python implementation of Simple Decycler indicator created by John Ehlers
+    :param data: list of price data
+    :type data: list
+    :param hp_length: High Pass filter length
+    :type hp_length: int
+    :return: Decycler applied price data
+    :rtype: list
+    """
+    hpf = []
+
+    for i, _ in enumerate(data):
+        if i < 2:
+            hpf.append(0)
+        else:
+            alpha_arg = 2 * 3.14159 / (hp_length * 1.414)
+            alpha1 = (math.cos(alpha_arg) + math.sin(alpha_arg) - 1) / math.cos(alpha_arg)
+            hpf.append(math.pow(1.0-alpha1/2.0, 2)*(data[i]-2*data[i-1]+data[i-2]) + 2*(1-alpha1)*hpf[i-1] - math.pow(1-alpha1, 2)*hpf[i-2])
+
+    dec = []
+    for i, _ in enumerate(data):
+        dec.append(data[i] - hpf[i])
+
+    return dec
+
+df['decycler'] = decycler(df['Adj Close'], 20)
+
 # In[14]:
 
 
@@ -633,6 +662,9 @@ fig3.add_trace(go.Scatter(x=df.index, y=dfr['resistance'], name='Resistance',
 
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
                          line = dict(color='green', width=2),visible='legendonly'))
+
+fig3.add_trace(go.Scatter(x=df.index, y=df['decycler'], name='Decycler',
+                         line = dict(color='saddlebrown', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
