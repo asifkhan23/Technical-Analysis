@@ -494,9 +494,9 @@ def ebsw(data, hp_length, ssf_length):
     return wave
 
 df['ebs'] = ebsw(df['Adj Close'], 40, 10)
-df['ebs_signal_buy'] = np.where(df["ebs"]>= -1, 1, 0)
+df['ebs_signal_buy'] = np.where(df["ebs"]> -1, 1, 0)
 df['ebs_p'] = df['ebs_signal_buy'] * df['ebs']
-df['ebs_signal_sell'] = np.where(df["ebs"]<= 1, 1, 0)
+df['ebs_signal_sell'] = np.where(df["ebs"]< 1, 1, 0)
 df['ebs_n'] = df['ebs_signal_sell'] * df['ebs']
 df['ebs_p'].replace(0.000000, np.nan, inplace=True)
 df['ebs_n'].replace(0.000000, np.nan, inplace=True)
