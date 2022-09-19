@@ -676,10 +676,10 @@ fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
                          line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
-                         line = dict(color='green', width=2),visible='legendonly'))
+                         line = dict(color='green', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
-                         line = dict(color='red', width=2),visible='legendonly'))
+                         line = dict(color='red', width=2)))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
