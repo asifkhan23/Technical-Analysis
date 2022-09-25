@@ -745,7 +745,7 @@ layout = go.Layout(
     font_family='Monospace',
     font_color='#000000',
     font_size=20,
-    height=1000, width=400,
+#     height=1000, width=400,
 )
 
 if i == '1d':
