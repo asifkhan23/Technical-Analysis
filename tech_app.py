@@ -1205,7 +1205,7 @@ plt.legend(handles=legend_elements)
 tab1, tab2, tab3 = st.tabs(["Technical Analysis", "Fibonacci Retracements", 'Dow Theory'])
 
 with tab1:
-    st.header("Technical Analysis")
+#     st.header("Technical Analysis")
     st.plotly_chart(fig3)
     
 with tab2:
