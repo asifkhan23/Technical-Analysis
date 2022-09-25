@@ -634,16 +634,16 @@ fig3.append_trace(
 
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2),visible='legendonly'))
+                         line = dict(color='blue', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2), visible='legendonly'))
+                         line = dict(color='Black', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
-                         line = dict(color='orange', width=2), visible='legendonly'))
+                         line = dict(color='orange', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2), visible='legendonly'))
+                         line = dict(color='Black', width=2)))
 
 fig3.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
                          marker = dict(color='green', size=2)))
@@ -652,10 +652,10 @@ fig3.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
                          marker = dict(color='red', size=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 SMA',
-                         line = dict(color='red', width=2), visible='legendonly'))
+                         line = dict(color='red', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2), visible='legendonly'))
+                         line = dict(color='green', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
                          line = dict(color='purple', width=2), visible='legendonly'))
@@ -676,10 +676,10 @@ fig3.add_trace(go.Scatter(x=df.index, y=dfr['support'], name='Support',
                          line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
-                         line = dict(color='green', width=2)))
+                         line = dict(color='green', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
-                         line = dict(color='red', width=2)))
+                         line = dict(color='red', width=2), visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
@@ -724,8 +724,8 @@ fig3.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
 fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
                          line = dict(color='red', width=2)), row = 4, col = 1)
 
-fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
-                         line = dict(color='royalblue', width=4), visible='legendonly'), row = 5, col = 1 )
+fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='ATR',
+                         line = dict(color='royalblue', width=4)), row = 5, col = 1 )
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
                          line = dict(color='red', width=4),visible='legendonly'), row = 5, col = 1)
@@ -745,7 +745,7 @@ layout = go.Layout(
     font_family='Monospace',
     font_color='#000000',
     font_size=20,
-    height=2200, width=1200,
+    height=1400, width=800,
 )
 
 if i == '1d':
