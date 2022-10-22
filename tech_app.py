@@ -661,10 +661,10 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
                          line = dict(color='purple', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2), visible='legendonly'))
+                         line = dict(color='green', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2), visible='legendonly'))
+                         line = dict(color='red', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
                           line = dict(color='blue', width=2),visible='legendonly'))
