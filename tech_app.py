@@ -634,16 +634,16 @@ fig3.append_trace(
 
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2)))
+                         line = dict(color='blue', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2)))
+                         line = dict(color='Black', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
-                         line = dict(color='orange', width=2)))
+                         line = dict(color='orange', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2)))
+                         line = dict(color='Black', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
                          marker = dict(color='green', size=2)))
@@ -652,10 +652,10 @@ fig3.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
                          marker = dict(color='red', size=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 SMA',
-                         line = dict(color='red', width=2)))
+                         line = dict(color='red', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2)))
+                         line = dict(color='green', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
                          line = dict(color='purple', width=2), visible='legendonly'))
@@ -725,7 +725,7 @@ fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
                          line = dict(color='red', width=2)), row = 4, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='ATR',
-                         line = dict(color='royalblue', width=4)), row = 5, col = 1 )
+                         line = dict(color='royalblue', width=4), visible='legendonly'), row = 5, col = 1 )
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
                          line = dict(color='red', width=4),visible='legendonly'), row = 5, col = 1)
