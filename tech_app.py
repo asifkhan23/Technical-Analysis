@@ -853,6 +853,13 @@ df5['group'] = df5['label'].ne(df5['label'].shift()).cumsum()
 # Get a groupby object that contains information on the group
 df5 = df5.groupby('group')
 
+fig1 = go.Figure(data=[go.Candlestick(x=df.index,
+                open=df['Open'],
+                high=df['High'],
+                low=df['Low'],
+                close=df['Adj Close'])])
+
+
 # Cycle through the data pertaining to the fill between spans
 dfs = []
 for name, data in df5:
@@ -862,38 +869,38 @@ for name, data in df5:
 # Add 2 traces to the fig object for each time the spans cross
 # and then define the fill using fill='tonexty' for the second trace
 for df in dfs:
-    fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
-                              line = dict(color='rgba(0,0,0,0)'),visible='legendonly'))
+    fig1.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
+                              line = dict(color='rgba(0,0,0,0)')))
     
-    fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
-                              line = dict(color='rgba(0,0,0,0)'),visible='legendonly',
+    fig1.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
+                              line = dict(color='rgba(0,0,0,0)'),
                               fill='tonexty', 
                               fillcolor = get_fill_color(df['label'].iloc[0])))
 
 
 # Create plots for all of the nonfill data
 baseline = go.Scatter(x=df_c.index, y=df_c['Slow_Moving_Average'], 
-                   line=dict(color='orange', width=2),visible='legendonly', name="Baseline")
+                   line=dict(color='orange', width=2), name="Baseline")
 
 conversion = go.Scatter(x=df_c.index, y=df_c['Fast_Moving_Average'], 
-                  line=dict(color='blue', width=1),visible='legendonly', name="Conversionline")
+                  line=dict(color='blue', width=1), name="Conversionline")
 
 lagging = go.Scatter(x=df_c.index, y=df_c['Chikou_Span'], 
-                  line=dict(color='purple', width=2, dash='solid'),visible='legendonly', name="Lagging")
+                  line=dict(color='purple', width=2, dash='solid'), name="Lagging")
 
 span_a = go.Scatter(x=df_c.index, y=df_c['Leading_Span_A'],
-                  line=dict(color='green', width=2, dash='solid'),visible='legendonly', name="Span A")
+                  line=dict(color='green', width=2, dash='solid'), name="Span A")
 
 span_b = go.Scatter(x=df_c.index, y=df_c['Leading_Span_B'],
-                    line=dict(color='red', width=1, dash='solid'),visible='legendonly', name="Span B")
+                    line=dict(color='red', width=1, dash='solid'), name="Span B")
 
 # Add plots to the figure
 # fig7.add_trace(candle)
-fig3.add_trace(baseline)
-fig3.add_trace(conversion)
-fig3.add_trace(lagging)
-fig3.add_trace(span_a)
-fig3.add_trace(span_b)
+fig1.add_trace(baseline)
+fig1.add_trace(conversion)
+fig1.add_trace(lagging)
+fig1.add_trace(span_a)
+fig1.add_trace(span_b)
 
 
 
@@ -1206,7 +1213,7 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3 = st.tabs(["Trend Following", "Fibonacci Retracements", 'Dow Theory'])
+tab1, tab2, tab3, tab4 = st.tabs(["Trend Following", "Fibonacci Retracements", 'Dow Theory', 'Ichimoku'])
 
 with tab1:
     st.header("Trend Following")
@@ -1221,3 +1228,7 @@ with tab2:
 with tab3:
     st.header("Dow Theory")
     st.pyplot(fig5)
+    
+with tab4:
+    st.header("Ichimoku")
+    st.pyplot(fig1)
