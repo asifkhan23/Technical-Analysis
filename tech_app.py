@@ -758,7 +758,7 @@ layout = go.Layout(
     height=600, width=800)
 
 if i == '1d':
-    fig3.update_xaxes(
+    fig.update_xaxes(
             rangeslider_visible=False,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
@@ -768,7 +768,7 @@ if i == '1d':
                 ]
                     )
 elif i == '1wk':
-    fig3.update_xaxes(
+    fig.update_xaxes(
             rangeslider_visible=False,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
@@ -778,7 +778,7 @@ elif i == '1wk':
                 ]
                     )
 else:
-    fig3.update_xaxes(
+    fig.update_xaxes(
             rangeslider_visible=False,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
