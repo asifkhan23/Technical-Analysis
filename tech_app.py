@@ -544,32 +544,11 @@ fig2 = go.Figure(data=[go.Candlestick(x=df.index,
                 low=df['Low'],
                 close=df['Adj Close'])])
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
-                         line = dict(color='orange', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2), visible='legendonly'))
-
 fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
                          marker = dict(color='green', size=2)))
 
 fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
                          marker = dict(color='red', size=2)))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
-                         line = dict(color='purple', width=2), visible='legendonly'))
 
 fig2.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
                          line = dict(color='green', width=2)))
@@ -577,27 +556,12 @@ fig2.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend 
 fig2.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
                          line = dict(color='red', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2),visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
-                         line = dict(color='green', width=2), visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
 fig2.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
 
 
 layout = go.Layout(
-    title=f'{ticker.upper()} Trend Analysis',
+    title=f'{ticker.upper()} Trend & RSI',
     plot_bgcolor='#efefef',
     # Font Families
     font_family='Monospace',
@@ -811,47 +775,6 @@ fig6 = go.Figure(data=[go.Candlestick(x=df.index,
                 low=df['Low'],
                 close=df['Adj Close'])])
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
-                         line = dict(color='orange', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
-                         line = dict(color='purple', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2), visible='legendonly'))
 
 fig6.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
                          line = dict(color='green', width=2)))
