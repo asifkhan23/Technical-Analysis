@@ -604,12 +604,11 @@ fig2.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
 
 
 layout = go.Layout(
-    title=f'{ticker.upper()} Trend & RSI',
     plot_bgcolor='#efefef',
     # Font Families
     font_family='Monospace',
     font_color='#000000',
-    font_size=15,
+    font_size=20,
     height=4000, width=3200,
     )
 
@@ -868,12 +867,11 @@ fig6.append_trace(go.Scatter(x=df.index, y=df['ebs_n'], name='Sinewave Bear',
 
 
 layout = go.Layout(
-    title=f'{ticker.upper()} Trend Analysis',
     plot_bgcolor='#efefef',
     # Font Families
     font_family='Monospace',
     font_color='#000000',
-    font_size=15,
+    font_size=20,
     height=4000, width=3200,
     )
 
