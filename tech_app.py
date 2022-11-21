@@ -882,10 +882,10 @@ for name, data in df5:
 # Add 2 traces to the fig object for each time the spans cross
 # and then define the fill using fill='tonexty' for the second trace
 for df in dfs:
-    fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
+    fig2.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
                               line = dict(color='rgba(0,0,0,0)'),visible='legendonly'))
     
-    fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
+    fig2.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
                               line = dict(color='rgba(0,0,0,0)'),visible='legendonly',
                               fill='tonexty', 
                               fillcolor = get_fill_color(df['label'].iloc[0])))
@@ -909,11 +909,11 @@ span_b = go.Scatter(x=df_c.index, y=df_c['Leading_Span_B'],
 
 # Add plots to the figure
 # fig7.add_trace(candle)
-fig3.add_trace(baseline)
-fig3.add_trace(conversion)
-fig3.add_trace(lagging)
-fig3.add_trace(span_a)
-fig3.add_trace(span_b)
+fig2.add_trace(baseline)
+fig2.add_trace(conversion)
+fig2.add_trace(lagging)
+fig2.add_trace(span_a)
+fig2.add_trace(span_b)
 
 
 
