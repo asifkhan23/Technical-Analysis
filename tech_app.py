@@ -1243,4 +1243,4 @@ with tab3:
 
 with tab4:
     st.header("SMA, BB & MACD")
-    st.pyplot(fig3)
+    st.plotly_chart(fig3)
