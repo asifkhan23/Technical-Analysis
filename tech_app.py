@@ -538,11 +538,19 @@ df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 
 fig2 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI"))
 
-fig2 = go.Figure(data=[go.Candlestick(x=df.index,
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Adj Close'])])
+fig2.append_trace(
+    go.Candlestick(
+        x=df.index,
+        open=df['Open'],
+        high=df['High'],
+        low=df['Low'],
+        close=df['Adj Close'],
+        increasing_line_color='green',
+        decreasing_line_color='red',
+        showlegend=False
+    ), row=1, col=1
+)
+
 
 fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
                          marker = dict(color='green', size=2)))
@@ -769,11 +777,19 @@ fig3.update_layout(layout)
 # Trend Cycle & RSI 
 fig6 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", 'Sine Wave'))
 
-fig6 = go.Figure(data=[go.Candlestick(x=df.index,
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Adj Close'])])
+fig6.append_trace(
+    go.Candlestick(
+        x=df.index,
+        open=df['Open'],
+        high=df['High'],
+        low=df['Low'],
+        close=df['Adj Close'],
+        increasing_line_color='green',
+        decreasing_line_color='red',
+        showlegend=False
+    ), row=1, col=1
+)
+
 
 
 fig6.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
