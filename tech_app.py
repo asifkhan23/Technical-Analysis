@@ -536,7 +536,7 @@ df['decycler_p'].replace(0.000000, np.nan, inplace=True)
 df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 # In[14]:
 
-fig2 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI"))
+fig2 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI, ATR & ADX"))
 
 fig2.append_trace(
     go.Candlestick(
