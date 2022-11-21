@@ -1204,7 +1204,7 @@ tab1, tab2, tab3 = st.tabs(["Technical Analysis", "Fibonacci Retracements", 'Dow
 
 with tab1:
     st.header("Technical Analysis")
-    st.plotly_chart(fig3, use_container_width=False)
+    st.plotly_chart(fig3)
     
 with tab2:
     st.header("Fibonacci")
