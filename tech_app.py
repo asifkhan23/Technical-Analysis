@@ -596,6 +596,12 @@ fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
 fig2.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
                          line = dict(color='green', width=4)), row = 2, col = 1)
 
+fig2.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
+                         line = dict(color='royalblue', width=4),visible='legendonly'), row = 2, col = 1 )
+
+fig2.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
+                         line = dict(color='red', width=4),visible='legendonly'), row = 2, col = 1)
+
 
 layout = go.Layout(
     title=f'{ticker.upper()} Trend & RSI',
@@ -743,20 +749,6 @@ fig3.append_trace(
         marker_color=colors,
     ), row=2, col=1
 )
-
-
-# fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
-#                          line = dict(color='royalblue', width=4)), row = 4, col = 1 )
-
-# fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
-#                          line = dict(color='red', width=4)), row = 5, col = 1)
-
-# fig3.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
-#                          line = dict(color='blue', width=2)), row = 6, col = 1)
-
-# fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
-#                          line = dict(color='red', width=2)), row = 6, col = 1)
-
 
 # Make it pretty
 layout = go.Layout(
@@ -1453,10 +1445,10 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Trend & RSI", "Fibonacci Retracements", 'Dow Theory', 'SMA, BB & MACD', "Trend & Cycle","Regression & Stochastics"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Trend, ATR, ADX & RSI", "Fibonacci Retracements", 'Dow Theory', 'SMA, BB & MACD', "Trend & Cycle","Regression & Stochastics"])
 
 with tab1:
-    st.header("Trend & RSI")
+    st.header("Trend, ATR, ADX & RSI")
     st.plotly_chart(fig2)
     
 with tab2:
