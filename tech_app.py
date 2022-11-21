@@ -615,7 +615,7 @@ df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=7, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
+fig3 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
 
 fig3.append_trace(
     go.Candlestick(
@@ -674,7 +674,7 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
                          line = dict(color='green', width=2),visible='legendonly'))
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
-                         line = dict(color='green', width=4)), row = 2, col = 1)
+                         line = dict(color='green', width=4), visible='legendonly'), row = 2, col = 1)
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
                          line = dict(color='green', width=2), visible='legendonly'))
@@ -691,7 +691,7 @@ fig3.append_trace(
         name='macd',
         # showlegend=False,
         legendgroup='2',
-    ), row=3, col=1
+    ), row=2, col=1
 )
 # Slow signal (%d)
 fig3.append_trace(
@@ -702,7 +702,7 @@ fig3.append_trace(
         # showlegend=False,
         legendgroup='2',
         name='signal'
-    ), row=3, col=1
+    ), row=2, col=1
 )
 # Colorize the histogram values
 colors = np.where(df['Histogram'] < 0, 'red', 'green')
@@ -713,27 +713,27 @@ fig3.append_trace(
         y=df['Histogram'],
         name='histogram',
         marker_color=colors,
-    ), row=3, col=1
+    ), row=2, col=1
 )
 
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
-                         line = dict(color='royalblue', width=4)), row = 4, col = 1 )
+                         line = dict(color='royalblue', width=4), visible='legendonly'), row = 2, col = 1 )
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
-                         line = dict(color='red', width=4)), row = 5, col = 1)
+                         line = dict(color='red', width=4), visible='legendonly'), row = 2, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
-                         line = dict(color='blue', width=2)), row = 6, col = 1)
+                         line = dict(color='blue', width=2), visible='legendonly'), row = 2, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
-                         line = dict(color='red', width=2)), row = 6, col = 1)
+                         line = dict(color='red', width=2), visible='legendonly'), row = 2, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ebs_p'], name='Sinewave Bull',
-                         line = dict(color='green', width=2)), row = 7, col = 1 )
+                         line = dict(color='green', width=2), visible='legendonly'), row = 2, col = 1 )
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ebs_n'], name='Sinewave Bear',
-                         line = dict(color='red', width=2)), row = 7, col = 1 )
+                         line = dict(color='red', width=2), visible='legendonly'), row = 2, col = 1 )
 
 # Make it pretty
 layout = go.Layout(
@@ -742,7 +742,7 @@ layout = go.Layout(
     font_family='Monospace',
     font_color='#000000',
     font_size=20,
-    height=2800, width=1400,
+    height=28000, width=14000,
 )
 
 if i == '1d':
@@ -1204,7 +1204,7 @@ tab1, tab2, tab3 = st.tabs(["Technical Analysis", "Fibonacci Retracements", 'Dow
 
 with tab1:
     st.header("Technical Analysis")
-    st.plotly_chart(fig3,use_container_width = False)
+    st.plotly_chart(fig3)
     
 with tab2:
     st.header("Fibonacci")
