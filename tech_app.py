@@ -748,13 +748,13 @@ fig.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend U
 
 
 
-layout = go.Layout(
-    title=f"{ticker.upper()} Trend Folowing",
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=15)
+# layout = go.Layout(
+#     title=f"{ticker.upper()} Trend Folowing",
+#     plot_bgcolor='#efefef',
+#     # Font Families
+#     font_family='Monospace',
+#     font_color='#000000',
+#     font_size=15)
 
 if i == '1d':
     fig.update_xaxes(
@@ -788,7 +788,7 @@ else:
                     )  
 
 
-fig.update_layout(layout)
+# fig.update_layout(layout)
 
 # fig6 = go.Figure(data=[go.Candlestick(x=df.index,
 #                 open=df['Open'],
