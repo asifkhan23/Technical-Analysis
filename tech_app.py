@@ -1445,22 +1445,23 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Trend, ATR, ADX & RSI", "Fibonacci Levels", 'Dow Theory', 'SMA, BB & MACD', "Trend & Cycle","Regression & Stochastics"])
-
-with tab1:
-    st.header("Trend, ATR, ADX & RSI")
-    st.plotly_chart(fig2)
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Dow Theory',"Fibonacci Levels", "Trend, ATR, ADX & RSI",  'SMA, BB & MACD', "Trend & Cycle","Regression & Stochastics"])
     
+with tab1:
+    st.header("Dow Theory")
+    st.pyplot(fig5)
+
 with tab2:
     st.header("Fibonacci")
     st.write(" Retracemrnt Levels - (0=black, 0.236=red, 0.382=green, 0.5=blue, 0.618=cyan, 0.786= magenta,1 = yellow )")
     st.write(y)
     st.plotly_chart(fig4)
 
-with tab3:
-    st.header("Dow Theory")
-    st.pyplot(fig5)
 
+with tab3:
+    st.header("Trend, ATR, ADX & RSI")
+    st.plotly_chart(fig2)
+    
 with tab4:
     st.header("SMA, BB & MACD")
     st.plotly_chart(fig3)
