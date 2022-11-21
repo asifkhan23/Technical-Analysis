@@ -813,23 +813,32 @@ layout = go.Layout(
     # Font Families
     font_family='Monospace',
     font_color='#000000',
-    font_size=15,
-    height=600, width=800,
+    font_size=15
     )
 
 if i == '1d':
     fig6.update_xaxes(
-            rangeslider_visible=True,
+            rangeslider_visible=False,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                #dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
                 ]
-                    )    
+                    )
+elif i == '1wk':
+    fig6.update_xaxes(
+            rangeslider_visible=False,
+            rangebreaks=[
+                # NOTE: Below values are bound (not single values), ie. hide x to y
+                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+                ]
+                    )
 else:
     fig6.update_xaxes(
-            rangeslider_visible=True,
+            rangeslider_visible=False,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
@@ -1210,7 +1219,7 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3 = st.tabs(["Trend Following", "Fibonacci Retracements", 'Dow Theory'])
+tab1, tab2, tab3, tab4 = st.tabs(["Trend Following", "Fibonacci Retracements", 'Dow Theory', 'Linear Regression'])
 
 with tab1:
     st.header("Trend Following")
@@ -1225,3 +1234,7 @@ with tab2:
 with tab3:
     st.header("Dow Theory")
     st.pyplot(fig5)
+
+with tab4:
+    st.header("Linear Regression")
+    st.pyplot(fig6)
