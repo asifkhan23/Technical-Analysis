@@ -790,64 +790,64 @@ else:
 
 fig.update_layout(layout)
 
-fig6 = go.Figure(data=[go.Candlestick(x=df.index,
-                open=df['Open'],
-                high=df['High'],
-                low=df['Low'],
-                close=df['Adj Close'])])
+# fig6 = go.Figure(data=[go.Candlestick(x=df.index,
+#                 open=df['Open'],
+#                 high=df['High'],
+#                 low=df['Low'],
+#                 close=df['Adj Close'])])
 
 
-fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2)))
+# fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
+#                           line = dict(color='blue', width=2)))
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2)))
+# fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
+#                          line = dict(color='red', width=2)))
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2)))
+# fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
+#                          line = dict(color='green', width=2)))
 
 
-layout = go.Layout(
-    title=f'{ticker.upper()} Regression Channels',
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=15
-    )
+# layout = go.Layout(
+#     title=f'{ticker.upper()} Regression Channels',
+#     plot_bgcolor='#efefef',
+#     # Font Families
+#     font_family='Monospace',
+#     font_color='#000000',
+#     font_size=15
+#     )
 
-if i == '1d':
-    fig6.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-elif i == '1wk':
-    fig6.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-else:
-    fig6.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
+# if i == '1d':
+#     fig6.update_xaxes(
+#             rangeslider_visible=False,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
+# elif i == '1wk':
+#     fig6.update_xaxes(
+#             rangeslider_visible=False,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
+# else:
+#     fig6.update_xaxes(
+#             rangeslider_visible=False,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
 
-fig6.update_layout(layout)
+# fig6.update_layout(layout)
 
 
 
@@ -1219,7 +1219,7 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4 = st.tabs(["Trend Following", "Fibonacci Retracements", 'Dow Theory', 'Linear Regression'])
+tab1, tab2, tab3 = st.tabs(["Trend Following", "Fibonacci Retracements", 'Dow Theory'])
 
 with tab1:
     st.header("Trend Following")
@@ -1234,7 +1234,3 @@ with tab2:
 with tab3:
     st.header("Dow Theory")
     st.pyplot(fig5)
-
-with tab4:
-    st.header("Linear Regression")
-    st.pyplot(fig6)
