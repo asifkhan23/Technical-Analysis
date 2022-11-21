@@ -1200,18 +1200,18 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3 = st.tabs(["Technical Analysis", "Fibonacci Retracements", 'Dow Theory'])
+# tab1, tab2, tab3 = st.tabs(["Technical Analysis", "Fibonacci Retracements", 'Dow Theory'])
 
-with tab1:
-    st.header("Technical Analysis")
-    st.plotly_chart(fig3)
+# with tab1:
+#     st.header("Technical Analysis")
+#     st.plotly_chart(fig3)
     
-with tab2:
-    st.header("Fibonacci")
-    st.write(" Retracemrnt Levels - (0=black, 0.236=red, 0.382=green, 0.5=blue, 0.618=cyan, 0.786= magenta,1 = yellow )")
-    st.write(y)
-    st.plotly_chart(fig4)
+# with tab2:
+#     st.header("Fibonacci")
+#     st.write(" Retracemrnt Levels - (0=black, 0.236=red, 0.382=green, 0.5=blue, 0.618=cyan, 0.786= magenta,1 = yellow )")
+#     st.write(y)
+#     st.plotly_chart(fig4)
 
-with tab3:
-    st.header("Dow Theory")
-    st.pyplot(fig5)
+# with tab3:
+#     st.header("Dow Theory")
+#     st.pyplot(fig5)
