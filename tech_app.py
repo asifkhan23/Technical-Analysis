@@ -536,6 +536,7 @@ df['decycler_p'].replace(0.000000, np.nan, inplace=True)
 df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 # In[14]:
 
+fig2 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI"))
 
 fig2 = go.Figure(data=[go.Candlestick(x=df.index,
                 open=df['Open'],
@@ -590,6 +591,9 @@ fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
 
 fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
                          line = dict(color='red', width=2), visible='legendonly'))
+
+fig2.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
+                         line = dict(color='green', width=4)), row = 2, col = 1)
 
 
 layout = go.Layout(
@@ -799,7 +803,7 @@ else:
 fig3.update_layout(layout)
 
 # Trend Cycle & RSI 
-fig6 = make_subplots(rows=3, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", 'Sine Wave'))
+fig6 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", 'Sine Wave'))
 
 fig6 = go.Figure(data=[go.Candlestick(x=df.index,
                 open=df['Open'],
@@ -855,14 +859,11 @@ fig6.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
 fig6.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
                          line = dict(color='red', width=2)))
 
-fig6.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
-                         line = dict(color='green', width=4)), row = 2, col = 1)
-
 fig6.append_trace(go.Scatter(x=df.index, y=df['ebs_p'], name='Sinewave Bull',
-                         line = dict(color='green', width=2)), row = 3, col = 1 )
+                         line = dict(color='green', width=2)), row = 2, col = 1 )
 
 fig6.append_trace(go.Scatter(x=df.index, y=df['ebs_n'], name='Sinewave Bear',
-                         line = dict(color='red', width=2)), row = 3, col = 1 )
+                         line = dict(color='red', width=2)), row = 2, col = 1 )
 
 
 layout = go.Layout(
@@ -1327,10 +1328,10 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Trend Analysis", "Fibonacci Retracements", 'Dow Theory', 'SMA, BB & MACD', "Trend, Cycle & RSI"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Trend & RSI", "Fibonacci Retracements", 'Dow Theory', 'SMA, BB & MACD', "Trend & Cycle])
 
 with tab1:
-    st.header("Trend Analysis")
+    st.header("Trend & RSI")
     st.plotly_chart(fig2)
     
 with tab2:
@@ -1348,5 +1349,5 @@ with tab4:
     st.plotly_chart(fig3)
 
 with tab5:
-    st.header("Trend, Cycle & RSI")
+    st.header("Trend & Cycle")
     st.plotly_chart(fig6)
