@@ -1204,7 +1204,7 @@ plt.legend(handles=legend_elements)
 
 # with tab1:
 #     st.header("Technical Analysis")
-#     st.plotly_chart(fig3)
+st.plotly_chart(fig3)
     
 # with tab2:
 #     st.header("Fibonacci")
