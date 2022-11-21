@@ -615,7 +615,7 @@ df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=4, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD", 'Stochastic Oscillators'))
+fig3 = make_subplots(rows=3, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD"))
 
 fig3.append_trace(
     go.Candlestick(
@@ -724,10 +724,10 @@ fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
                          line = dict(color='red', width=4), visible='legendonly'), row = 2, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
-                         line = dict(color='blue', width=2)), row = 4, col = 1)
+                         line = dict(color='blue', width=2), visible='legendonly'), row = 2, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
-                         line = dict(color='red', width=2)), row = 4, col = 1)
+                         line = dict(color='red', width=2), visible='legendonly'), row = 2, col = 1)
 
 fig3.append_trace(go.Scatter(x=df.index, y=df['ebs_p'], name='Sinewave Bull',
                          line = dict(color='green', width=2), visible='legendonly'), row = 2, col = 1 )
