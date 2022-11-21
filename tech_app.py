@@ -1328,7 +1328,7 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Trend & RSI", "Fibonacci Retracements", 'Dow Theory', 'SMA, BB & MACD', "Trend & Cycle])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Trend & RSI", "Fibonacci Retracements", 'Dow Theory', 'SMA, BB & MACD', "Trend & Cycle"])
 
 with tab1:
     st.header("Trend & RSI")
