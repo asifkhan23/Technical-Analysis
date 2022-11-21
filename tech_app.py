@@ -615,7 +615,7 @@ df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
+fig3 = make_subplots(rows=3, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
 
 fig3.append_trace(
     go.Candlestick(
@@ -691,7 +691,7 @@ fig3.append_trace(
         name='macd',
         # showlegend=False,
         legendgroup='2',
-    ), row=2, col=1
+    ), row=3, col=1
 )
 # Slow signal (%d)
 fig3.append_trace(
@@ -702,7 +702,7 @@ fig3.append_trace(
         # showlegend=False,
         legendgroup='2',
         name='signal'
-    ), row=2, col=1
+    ), row=3, col=1
 )
 # Colorize the histogram values
 colors = np.where(df['Histogram'] < 0, 'red', 'green')
@@ -713,7 +713,7 @@ fig3.append_trace(
         y=df['Histogram'],
         name='histogram',
         marker_color=colors,
-    ), row=2, col=1
+    ), row=3, col=1
 )
 
 
