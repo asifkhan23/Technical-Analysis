@@ -536,114 +536,78 @@ df['decycler_p'].replace(0.000000, np.nan, inplace=True)
 df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 # In[14]:
 
-fig2 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI, ATR & ADX"))
 
-fig2.append_trace(
-    go.Candlestick(
-        x=df.index,
-        open=df['Open'],
-        high=df['High'],
-        low=df['Low'],
-        close=df['Adj Close'],
-        increasing_line_color='green',
-        decreasing_line_color='red',
-        showlegend=False
-    ), row=1, col=1
-)
+# fig2 = go.Figure(data=[go.Candlestick(x=df.index,
+#                 open=df['Open'],
+#                 high=df['High'],
+#                 low=df['Low'],
+#                 close=df['Adj Close'])])
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2),visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
+#                          line = dict(color='blue', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2),visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
+#                          line = dict(color='Black', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
-                         line = dict(color='orange', width=2),visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='Middleband',
+#                          line = dict(color='orange', width=2)))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2),visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
+#                          line = dict(color='Black', width=2)))
 
+# fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
+#                          marker = dict(color='green', size=2)))
 
-fig2.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2)))
+# fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
+#                          marker = dict(color='red', size=2)))
 
-fig2.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 MA',
+#                          line = dict(color='red', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
+#                          line = dict(color='green', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2)))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
+#                          line = dict(color='purple', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2),visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
+#                          line = dict(color='green', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2),visible='legendonly'))
+# fig2.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
+#                          line = dict(color='red', width=2), visible='legendonly'))
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2),visible='legendonly'))
+# layout = go.Layout(
+#     title=f'{ticker.upper()} Bollinger Bands',
+#     plot_bgcolor='#efefef',
+#     # Font Families
+#     font_family='Monospace',
+#     font_color='#000000',
+#     font_size=15,
+#     height=600, width=800,
+#     )
 
+# if i == '1d':
+#     fig2.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
+# else:
+#     fig2.update_xaxes(
+#             rangeslider_visible=True,
+#             rangebreaks=[
+#                 # NOTE: Below values are bound (not single values), ie. hide x to y
+#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
+#                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
+#                 ]
+#                     )
 
-fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-fig2.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
-                         line = dict(color='red', width=2),visible='legendonly'))
-
-
-fig2.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
-                         line = dict(color='green', width=4)), row = 2, col = 1)
-
-fig2.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
-                         line = dict(color='royalblue', width=4),visible='legendonly'), row = 2, col = 1 )
-
-fig2.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
-                         line = dict(color='red', width=4),visible='legendonly'), row = 2, col = 1)
-
-
-layout = go.Layout(
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=20,
-    height=4000, width=3200,
-    )
-
-if i == '1d':
-    fig2.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-elif i == '1wk':
-    fig2.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-else:
-    fig2.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-
-fig2.update_layout(layout)
+# fig2.update_layout(layout)
     
 # fig2.show()
 
@@ -651,7 +615,7 @@ fig2.update_layout(layout)
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "MACD"))
+fig3 = make_subplots(rows=7, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
 
 fig3.append_trace(
     go.Candlestick(
@@ -668,37 +632,37 @@ fig3.append_trace(
 
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2)))
+                         line = dict(color='blue', width=2),visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2)))
+                         line = dict(color='Black', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
-                         line = dict(color='orange', width=2)))
+                         line = dict(color='orange', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2)))
+                         line = dict(color='Black', width=2),visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2),visible='legendonly'))
+                         marker = dict(color='green', size=2)))
 
 fig3.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2),visible='legendonly'))
+                         marker = dict(color='red', size=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 SMA',
-                         line = dict(color='red', width=2)))
+                         line = dict(color='red', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2)))
+                         line = dict(color='green', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
                          line = dict(color='purple', width=2), visible='legendonly'))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2),visible='legendonly'))
+                         line = dict(color='green', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2),visible='legendonly'))
+                         line = dict(color='red', width=2)))
 
 fig3.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
                           line = dict(color='blue', width=2),visible='legendonly'))
@@ -708,6 +672,9 @@ fig3.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
                          line = dict(color='green', width=2),visible='legendonly'))
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['rsi'], name='RSI',
+                         line = dict(color='green', width=4)), row = 2, col = 1)
 
 fig3.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
                          line = dict(color='green', width=2), visible='legendonly'))
@@ -724,7 +691,7 @@ fig3.append_trace(
         name='macd',
         # showlegend=False,
         legendgroup='2',
-    ), row=2, col=1
+    ), row=3, col=1
 )
 # Slow signal (%d)
 fig3.append_trace(
@@ -735,7 +702,7 @@ fig3.append_trace(
         # showlegend=False,
         legendgroup='2',
         name='signal'
-    ), row=2, col=1
+    ), row=3, col=1
 )
 # Colorize the histogram values
 colors = np.where(df['Histogram'] < 0, 'red', 'green')
@@ -746,8 +713,27 @@ fig3.append_trace(
         y=df['Histogram'],
         name='histogram',
         marker_color=colors,
-    ), row=2, col=1
+    ), row=3, col=1
 )
+
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ATR'], name='Average True Range',
+                         line = dict(color='royalblue', width=4)), row = 4, col = 1 )
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ADX'], name='ADX',
+                         line = dict(color='red', width=4)), row = 5, col = 1)
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
+                         line = dict(color='blue', width=2)), row = 6, col = 1)
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
+                         line = dict(color='red', width=2)), row = 6, col = 1)
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ebs_p'], name='Sinewave Bull',
+                         line = dict(color='green', width=2)), row = 7, col = 1 )
+
+fig3.append_trace(go.Scatter(x=df.index, y=df['ebs_n'], name='Sinewave Bear',
+                         line = dict(color='red', width=2)), row = 7, col = 1 )
 
 # Make it pretty
 layout = go.Layout(
@@ -756,7 +742,7 @@ layout = go.Layout(
     font_family='Monospace',
     font_color='#000000',
     font_size=20,
-    height=4000, width=3200,
+    height=2800, width=1400,
 )
 
 if i == '1d':
@@ -794,110 +780,51 @@ else:
 # Update options and show plot
 fig3.update_layout(layout)
 
-# Trend Cycle & RSI 
-fig6 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", 'Sine Wave'))
+# fig3.show()
 
-fig6.append_trace(
-    go.Candlestick(
-        x=df.index,
-        open=df['Open'],
-        high=df['High'],
-        low=df['Low'],
-        close=df['Adj Close'],
-        increasing_line_color='green',
-        decreasing_line_color='red',
-        showlegend=False
-    ), row=1, col=1
-)
+# Regression Channels Plot
+# df_reg = yf.download(ticker, start, end, interval='1d')
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2),visible='legendonly'))
+fig6 = go.Figure(data=[go.Candlestick(x=df.index,
+                open=df['Open'],
+                high=df['High'],
+                low=df['Low'],
+                close=df['Adj Close'])])
 
-fig6.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
-                         line = dict(color='orange', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 SMA',
-                         line = dict(color='red', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
-                         line = dict(color='purple', width=2), visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2),visible='legendonly'))
 
 fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2),visible='legendonly'))
+                          line = dict(color='blue', width=2)))
 
 fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2),visible='legendonly'))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
-                         line = dict(color='green', width=2)))
-
-fig6.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
                          line = dict(color='red', width=2)))
 
-fig6.append_trace(go.Scatter(x=df.index, y=df['ebs_p'], name='Sinewave Bull',
-                         line = dict(color='green', width=2)), row = 2, col = 1 )
-
-fig6.append_trace(go.Scatter(x=df.index, y=df['ebs_n'], name='Sinewave Bear',
-                         line = dict(color='red', width=2)), row = 2, col = 1 )
+fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
+                         line = dict(color='green', width=2)))
 
 
 layout = go.Layout(
+    title=f'{ticker.upper()} Regression Channels',
     plot_bgcolor='#efefef',
     # Font Families
     font_family='Monospace',
     font_color='#000000',
-    font_size=20,
-    height=4000, width=3200,
+    font_size=15,
+    height=600, width=800,
     )
 
 if i == '1d':
     fig6.update_xaxes(
-            rangeslider_visible=False,
+            rangeslider_visible=True,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
+                #dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
                 ]
-                    )
-elif i == '1wk':
-    fig6.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
+                    )    
 else:
     fig6.update_xaxes(
-            rangeslider_visible=False,
+            rangeslider_visible=True,
             rangebreaks=[
                 # NOTE: Below values are bound (not single values), ie. hide x to y
                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
@@ -907,176 +834,6 @@ else:
                     )
 
 fig6.update_layout(layout)
-
-# Regression & Stochastics Construct a 2 x 1 Plotly figure
-fig7 = make_subplots(rows=2, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "Stochastic Oscillators"))
-
-fig7.append_trace(
-    go.Candlestick(
-        x=df.index,
-        open=df['Open'],
-        high=df['High'],
-        low=df['Low'],
-        close=df['Adj Close'],
-        increasing_line_color='green',
-        decreasing_line_color='red',
-        showlegend=False
-    ), row=1, col=1
-)
-
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['9 MA'], name='9 SMA',
-                         line = dict(color='blue', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['Upper'], name='Upperband',
-                         line = dict(color='Black', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['SMA'], name='20 SMA',
-                         line = dict(color='orange', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['Lower'], name='Lowerband',
-                         line = dict(color='Black', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=dates, y=psarbull, name='buy',mode = 'markers',
-                         marker = dict(color='green', size=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=dates, y=psarbear, name='sell', mode = 'markers',
-                         marker = dict(color='red', size=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['200 MA'], name='200 SMA',
-                         line = dict(color='red', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['50 MA'], name='50 SMA',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['100 MA'], name='100 SMA',
-                         line = dict(color='purple', width=2), visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['Final Lowerband'], name='Supertrend Lower Band',
-                         line = dict(color='green', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['Final Upperband'], name='Supertrend Upper Band',
-                         line = dict(color='red', width=2),visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-                          line = dict(color='blue', width=2)))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-                         line = dict(color='red', width=2)))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-                         line = dict(color='green', width=2)))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['decycler_p'], name='Decycler Bull',
-                         line = dict(color='green', width=2), visible='legendonly'))
-
-fig7.add_trace(go.Scatter(x=df.index, y=df['decycler_n'], name='Decycler Bear',
-                         line = dict(color='red', width=2), visible='legendonly'))
-
-fig7.append_trace(go.Scatter(x=df.index, y=df['K'], name='Fast K',
-                         line = dict(color='blue', width=2)), row = 2, col = 1)
-
-fig7.append_trace(go.Scatter(x=df.index, y=df['D'], name='Slow D',
-                         line = dict(color='red', width=2)), row = 2, col = 1)
-
-
-# Make it pretty
-layout = go.Layout(
-    plot_bgcolor='#efefef',
-    # Font Families
-    font_family='Monospace',
-    font_color='#000000',
-    font_size=20,
-    height=4000, width=3200,
-)
-
-if i == '1d':
-    fig7.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-elif i == '1wk':
-    fig7.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                # dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-else:
-    fig7.update_xaxes(
-            rangeslider_visible=False,
-            rangebreaks=[
-                # NOTE: Below values are bound (not single values), ie. hide x to y
-                dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-                dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-                    # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-                ]
-                    )
-
-
-# Update options and show plot
-fig3.update_layout(layout)
-
-# # Regression Channels Plot
-# # df_reg = yf.download(ticker, start, end, interval='1d')
-
-# fig6 = go.Figure(data=[go.Candlestick(x=df.index,
-#                 open=df['Open'],
-#                 high=df['High'],
-#                 low=df['Low'],
-#                 close=df['Adj Close'])])
-
-
-# fig6.add_trace(go.Scatter(x=df.index, y=dfr['y_pred_unscaled'], name='Regression',
-#                           line = dict(color='blue', width=2)))
-
-# fig6.add_trace(go.Scatter(x=df.index, y=df['Uptrend'], name='Resistance',
-#                          line = dict(color='red', width=2)))
-
-# fig6.add_trace(go.Scatter(x=df.index, y=df['Downtrend'], name='Support',
-#                          line = dict(color='green', width=2)))
-
-
-# layout = go.Layout(
-#     title=f'{ticker.upper()} Regression Channels',
-#     plot_bgcolor='#efefef',
-#     # Font Families
-#     font_family='Monospace',
-#     font_color='#000000',
-#     font_size=15,
-#     height=600, width=800,
-#     )
-
-# if i == '1d':
-#     fig6.update_xaxes(
-#             rangeslider_visible=True,
-#             rangebreaks=[
-#                 # NOTE: Below values are bound (not single values), ie. hide x to y
-#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-#                 #dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-#                 ]
-#                     )    
-# else:
-#     fig6.update_xaxes(
-#             rangeslider_visible=True,
-#             rangebreaks=[
-#                 # NOTE: Below values are bound (not single values), ie. hide x to y
-#                 dict(bounds=["sat", "mon"]),  # hide weekends, eg. hide sat to before mon
-#                 dict(bounds=[16, 9.5], pattern="hour"),  # hide hours outside of 9.30am-4pm
-#                     # dict(values=["2019-12-25", "2020-12-24"])  # hide holidays (Christmas and New Year's, etc)
-#                 ]
-#                     )
-
-# fig6.update_layout(layout)
 
 
 
@@ -1099,10 +856,10 @@ for name, data in df5:
 # Add 2 traces to the fig object for each time the spans cross
 # and then define the fill using fill='tonexty' for the second trace
 for df in dfs:
-    fig2.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
+    fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_A'],
                               line = dict(color='rgba(0,0,0,0)'),visible='legendonly'))
     
-    fig2.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
+    fig3.add_traces(go.Scatter(x=df.index, y = df['Leading_Span_B'],
                               line = dict(color='rgba(0,0,0,0)'),visible='legendonly',
                               fill='tonexty', 
                               fillcolor = get_fill_color(df['label'].iloc[0])))
@@ -1126,11 +883,11 @@ span_b = go.Scatter(x=df_c.index, y=df_c['Leading_Span_B'],
 
 # Add plots to the figure
 # fig7.add_trace(candle)
-fig2.add_trace(baseline)
-fig2.add_trace(conversion)
-fig2.add_trace(lagging)
-fig2.add_trace(span_a)
-fig2.add_trace(span_b)
+fig3.add_trace(baseline)
+fig3.add_trace(conversion)
+fig3.add_trace(lagging)
+fig3.add_trace(span_a)
+fig3.add_trace(span_b)
 
 
 
@@ -1443,31 +1200,18 @@ legend_elements = [
 plt.legend(handles=legend_elements)
 
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Dow Theory',"Fibonacci Levels", "Trend, ATR, ADX & RSI",  'SMA, BB & MACD', "Trend & Cycle","Regression & Stochastics"])
+tab1, tab2, tab3 = st.tabs(['Dow Theory' , "Fibonacci Retracements","Technical Analysis"])
     
 with tab1:
     st.header("Dow Theory")
     st.pyplot(fig5)
-
+    
 with tab2:
     st.header("Fibonacci")
     st.write(" Retracemrnt Levels - (0=black, 0.236=red, 0.382=green, 0.5=blue, 0.618=cyan, 0.786= magenta,1 = yellow )")
     st.write(y)
     st.plotly_chart(fig4)
 
-
 with tab3:
-    st.header("Trend, ATR, ADX & RSI")
-    st.plotly_chart(fig2)
-    
-with tab4:
-    st.header("SMA, BB & MACD")
+    st.header("Technical Analysis")
     st.plotly_chart(fig3)
-
-with tab5:
-    st.header("Trend & Cycle")
-    st.plotly_chart(fig6)
-
-with tab6:
-    st.header("Regression & Stochastics")
-    st.plotly_chart(fig7)
