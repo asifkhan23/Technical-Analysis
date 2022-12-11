@@ -615,7 +615,7 @@ df['decycler_n'].replace(0.000000, np.nan, inplace=True)
 
 
 # Construct a 2 x 1 Plotly figure
-fig3 = make_subplots(rows=7, cols=1, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
+fig3 = make_subplots(rows=7, cols=1, vertical_spacing = 0.05, subplot_titles=(f"{ticker.upper()} Daily Candlestick Chart", "RSI", "MACD",  "ATR", 'ADX', 'Stochastic Oscillators'))
 
 fig3.append_trace(
     go.Candlestick(
