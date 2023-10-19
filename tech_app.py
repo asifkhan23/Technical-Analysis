@@ -942,7 +942,7 @@ for i in range(len(levels)):
 
 # Dow Thoery
 
-data = yf.download(ticker, start, end, interval = '1d')
+data = yf.download(ticker, start, end, interval= i)
 
 data['local_max'] = data['Close'][
   (data['Close'].shift(1) < data['Close']) &
